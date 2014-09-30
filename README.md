@@ -1,4 +1,4 @@
-![version-1.0.0](http://img.shields.io/badge/Version-1.0.0-00cc00.svg?style=flat) &nbsp; ![MIT](http://img.shields.io/badge/License-MIT-dd6ad5.svg?style=flat) &nbsp; ![minified-download-664b](http://img.shields.io/badge/Minified%20Download-664b-136ad5.svg?style=flat)
+![version-1.0.1](http://img.shields.io/badge/Version-1.0.1-00cc00.svg?style=flat) &nbsp; ![MIT](http://img.shields.io/badge/License-MIT-dd6ad5.svg?style=flat) &nbsp; ![minified-download-664b](http://img.shields.io/badge/Minified%20Download-664b-136ad5.svg?style=flat)
 
 attrExtend
 ============
