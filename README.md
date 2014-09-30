@@ -10,7 +10,9 @@ attrExtend ports the same features of jQuery's native *Class functions. Most par
 
 API
 -----------
-**hasAttr:** returns boolean  
-**attrHasProp:** returns boolean  
-**attrAddProp:**  returns jQuery Object -- chainable  
-**attrRemoveProp:**  returns jQuery Object -- chainable  
+| **FUNCTION**       | **RETURNS**   | **ARGUMENTS**       | **EXAMPLE**                                       |
+| ------------------ | ------------- |-------------------- | ------------------------------------------------- |
+| **hasAttr**       | true or false | attribute           | $(element).hasAttr('attribute')                    |
+|**attrHasProp**    | true or false | attribute, property | $(element).attrHasProp('attribute', 'property')    |
+|**attrAddProp**    | jQuery Object | attribute, property | $(element).attrAddProp('attribute', 'property')    |
+|**attrRemoveProp** | jQuery Object | attribute, property | $(element).attrRemoveProp('attribute', 'property') |
