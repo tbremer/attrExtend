@@ -6,7 +6,7 @@ A simple plugin that extends jQuery attribute modification similar to *Class fun
 
 How to use
 -----------
-Take this simple element: `<span id="test" data-dynamic-attr="dynamic"></span>` attrExtend ports the same features of jQuery's native *Class functions. Most parts of this extension are chainable
+attrExtend ports the same features of jQuery's native *Class functions. Most parts of this extension are chainable.
 
 API
 -----------
