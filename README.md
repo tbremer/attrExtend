@@ -2,7 +2,7 @@
 
 attrExtend
 ============
-A simple plugin that extends jQuery attribute modification similar to *Class functions. Crafted for a need of simple reusable development processes by [tbremer @ MISE.io](//mise.io). Feel free to download [here](https://github.com/tbremer/selectify.js/archive/master.zip), or checkout the [demo](//mise.io/selectify.js)
+A simple plugin that extends jQuery attribute modification similar to *Class functions. Crafted for a need of simple reusable development processes by [tbremer @ MISE.io](//mise.io).
 
 How to use
 -----------
