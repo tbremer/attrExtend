@@ -1,16 +1,20 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>attrExtend by tbremer</title>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <title>attrExtend by tbremer</title>
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <script src="//code.jquery.com/jquery-1.8.3.min.js"></script>
+  <script src="javascripts/attrExtend.js"></script>
+
+  <link rel="stylesheet" href="stylesheets/styles.css">
+  <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+
   </head>
   <body>
     <div class="wrapper">
@@ -30,53 +34,91 @@
       <section>
         <p><img src="http://img.shields.io/badge/Version-1.0.1-00cc00.svg?style=flat" alt="version-1.0.1">   <img src="http://img.shields.io/badge/License-MIT-dd6ad5.svg?style=flat" alt="MIT">   <img src="http://img.shields.io/badge/Minified%20Download-664b-136ad5.svg?style=flat" alt="minified-download-664b"></p>
 
-<h1>
-<a name="attrextend" class="anchor" href="#attrextend"><span class="octicon octicon-link"></span></a>attrExtend</h1>
+        <h2>
+          <a name="how-to-use" class="anchor" href="#how-to-use"><span class="octicon octicon-link"></span></a>How to use
+        </h2>
 
-<p>A simple plugin that extends jQuery attribute modification similar to *Class functions. Crafted for a need of simple reusable development processes by <a href="//mise.io">tbremer @ MISE.io</a>.</p>
+        <p>attrExtend ports the same features of jQuery's native *Class functions. Most parts of this extension are chainable.</p>
 
-<h2>
-<a name="how-to-use" class="anchor" href="#how-to-use"><span class="octicon octicon-link"></span></a>How to use</h2>
+        <h2>
+          <a name="api" class="anchor" href="#api"><span class="octicon octicon-link"></span></a>API
+        </h2>
 
-<p>attrExtend ports the same features of jQuery's native *Class functions. Most parts of this extension are chainable.</p>
+        <table>
+          <thead>
+            <tr>
+              <th><strong>FUNCTION</strong></th>
+              <th><strong>RETURNS</strong></th>
+              <th><strong>ARGUMENTS</strong></th>
+              <th><strong>EXAMPLE</strong></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>hasAttr</strong></td>
+              <td>true or false</td>
+              <td>attribute</td>
+              <td>$(element).hasAttr('attribute')</td>
+            </tr>
+            <tr>
+              <td><strong>attrHasProp</strong></td>
+              <td>true or false</td>
+              <td>attribute, property</td>
+              <td>$(element).attrHasProp('attribute', 'property')</td>
+            </tr>
+            <tr>
+              <td><strong>attrAddProp</strong></td>
+              <td>jQuery Object</td>
+              <td>attribute, property</td>
+              <td>$(element).attrAddProp('attribute', 'property')</td>
+            </tr>
+            <tr>
+              <td><strong>attrRemoveProp</strong></td>
+              <td>jQuery Object</td>
+              <td>attribute, property</td>
+              <td>$(element).attrRemoveProp('attribute', 'property')</td>
+            </tr>
+          </tbody>
+        </table>
 
-<h2>
-<a name="api" class="anchor" href="#api"><span class="octicon octicon-link"></span></a>API</h2>
+        <h2>
+          <a name="tests" class="anchor" href="#tests"><span class="octicon octicon-link"></span></a>Tests
+        </h2>
 
-<table>
-<thead><tr>
-<th><strong>FUNCTION</strong></th>
-<th><strong>RETURNS</strong></th>
-<th><strong>ARGUMENTS</strong></th>
-<th><strong>EXAMPLE</strong></th>
-</tr></thead>
-<tbody>
-<tr>
-<td><strong>hasAttr</strong></td>
-<td>true or false</td>
-<td>attribute</td>
-<td>$(element).hasAttr('attribute')</td>
-</tr>
-<tr>
-<td><strong>attrHasProp</strong></td>
-<td>true or false</td>
-<td>attribute, property</td>
-<td>$(element).attrHasProp('attribute', 'property')</td>
-</tr>
-<tr>
-<td><strong>attrAddProp</strong></td>
-<td>jQuery Object</td>
-<td>attribute, property</td>
-<td>$(element).attrAddProp('attribute', 'property')</td>
-</tr>
-<tr>
-<td><strong>attrRemoveProp</strong></td>
-<td>jQuery Object</td>
-<td>attribute, property</td>
-<td>$(element).attrRemoveProp('attribute', 'property')</td>
-</tr>
-</tbody>
-</table>
+        <div class="jquery addProp pass" pass="1234">
+          <span class="title">attrAddProp('pass', '4567') to attribute</span>
+        </div>
+        <div class="jquery addProp unique">
+          <span class="title">attrAddProp('unique','4567') new attribute</span>
+        </div>
+
+        <hr>
+
+        <div class="jquery hasAttr pass" pass>
+          <span class="title">hasAttr('pass') passing</span>
+        </div>
+        <div class="jquery hasAttr fail" fail>
+          <span class="title">hasAttr('pass') failing</span>
+        </div>
+
+        <hr>
+
+        <div class="jquery hasProp pass" pass="1234">
+          <span class="title">attrHasProp('pass') passing</span>
+        </div>
+        <div class="jquery hasProp fail" fail="5678">
+          <span class="title">attrHasProp('pass') failing</span>
+        </div>
+
+        <hr>
+
+        <div class="jquery removeProp pass" pass="1234 4567">
+          <span class="title">attrRemoveProp() passing</span>
+        </div>
+        <div class="jquery removeProp fail" fail="5678 8901">
+          <span class="title">attrRemoveProp() failing</span>
+        </div>
+
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/tbremer">tbremer</a></p>
@@ -84,6 +126,8 @@
       </footer>
     </div>
     <script src="javascripts/scale.fix.js"></script>
-    
+    <script src="javascripts/attrExtendTests.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">
+
   </body>
-</html>
+  </html>
