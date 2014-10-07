@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="//code.jquery.com/jquery-1.8.3.min.js"></script>
+	<script src="attrExtend.js"></script>
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">
+	<meta charset="utf-8">
+	<title>jQuery Attr Extender</title>
+</head>
+<body>
+	<div class="jquery addProp pass" pass="1234">attrAddProp() to attribute</div>
+	<div class="jquery addProp unique">attrAddProp() new attribute</div>
+	<hr>
+	<div class="jquery hasAttr pass" pass>hasAttr() pass</div>
+	<div class="jquery hasAttr fail" fail>hasAttr() fail</div>
+	<hr>
+	<div class="jquery hasProp pass" pass="1234">attrHasProp() pass</div>
+	<div class="jquery hasProp fail" fail="5678">attrHasProp() fail</div>
+	<hr>
+	<div class="jquery removeProp pass" pass="1234 4567">attrRemoveProp() pass</div>
+	<div class="jquery removeProp fail" fail="5678 8901">attrRemoveProp() fail</div>
+
+	<script>
+		$(function () {
+			var $el = {
+				addProp: {
+					pass: $('.addProp.pass'),
+					unique: $('.addProp.unique')
+				},
+				hasAttr: {
+					pass: $('.hasAttr.pass'),
+					fail: $('.hasAttr.fail')
+				},
+				hasProp: {
+					pass: $('.hasProp.pass'),
+					fail: $('.hasProp.fail')
+				},
+				removeProp: {
+					pass: $('.removeProp.pass'),
+					fail: $('.removeProp.fail')
+				}
+			};
+
+			var iconTemplate = {
+				pass: $('&nbsp;<i class="fa fa-fw fa-check"></i>'),
+				fail: $('&nbsp;<i class="fa fa-fw fa-warning"></i>')
+			};
+
+        //
+        // addProp
+        //
+        if (typeof $el.addProp.pass.attrAddProp('pass','4567') === 'object') {
+        	$el.addProp.pass.append(iconTemplate.pass.clone());
+        }
+        if (typeof $el.addProp.unique.attrAddProp('unique','4567') === 'object') {
+        	$el.addProp.unique.attr('pass', '');
+        	$el.addProp.unique.append(iconTemplate.pass.clone());
+        }
+
+        //
+        // hasAttr
+        //
+        if ($el.hasAttr.pass.hasAttr('pass')) {
+        	$el.hasAttr.pass.append(iconTemplate.pass.clone());
+        }
+        if (!$el.hasAttr.fail.hasAttr('pass')) {
+        	$el.hasAttr.fail.append(iconTemplate.fail.clone());
+        }
+
+        //
+        // hasProp
+        //
+        if($el.hasProp.pass.attrHasProp('pass', '1234')) {
+        	$el.hasProp.pass.append(iconTemplate.pass.clone());
+        }
+        if(!$el.hasProp.fail.attrHasProp('fail', '1234')) {
+        	$el.hasProp.fail.append(iconTemplate.fail.clone());
+        }
+
+        //
+        // removeProp
+        //
+        if (typeof $el.removeProp.pass.attrRemoveProp('pass', '1234') === 'object') {
+        	$el.removeProp.pass.append(iconTemplate.pass.clone());
+        }
+        if (typeof $el.removeProp.fail.attrRemoveProp('fail', '1234') === 'object') {
+        	$el.removeProp.fail.append(iconTemplate.fail.clone());
+        }
+      });
+    </script>
+  </body>
+  </html>

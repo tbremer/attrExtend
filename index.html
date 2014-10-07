@@ -1,130 +1,133 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
-	<script src="//code.jquery.com/jquery-1.8.3.min.js"></script>
-	<script src="attrExtend.js"></script>
-	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">
-	<meta charset="utf-8">
-	<title>jQuery Attr Extender</title>
-</head>
-<body>
-	<div class="jquery addProp pass" pass="1234">attrAddProp() to attribute</div>
-	<div class="jquery addProp unique">attrAddProp() new attribute</div>
-	<hr>
-	<div class="jquery hasAttr pass" pass>hasAttr() pass</div>
-	<div class="jquery hasAttr fail" fail>hasAttr() fail</div>
-	<hr>
-	<div class="jquery hasProp pass" pass="1234">attrHasProp() pass</div>
-	<div class="jquery hasProp fail" fail="5678">attrHasProp() fail</div>
-	<hr>
-	<div class="jquery removeProp pass" pass="1234 4567">attrRemoveProp() pass</div>
-	<div class="jquery removeProp fail" fail="5678 8901">attrRemoveProp() fail</div>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <title>attrExtend by tbremer</title>
 
-	<script>
-		$(function () {
-			var $el = {
-				addProp: {
-					pass: $('.addProp.pass'),
-					unique: $('.addProp.unique')
-				},
-				hasAttr: {
-					pass: $('.hasAttr.pass'),
-					fail: $('.hasAttr.fail')
-				},
-				hasProp: {
-					pass: $('.hasProp.pass'),
-					fail: $('.hasProp.fail')
-				},
-				removeProp: {
-					pass: $('.removeProp.pass'),
-					fail: $('.removeProp.fail')
-				}
-			};
+  <script src="//code.jquery.com/jquery-1.8.3.min.js"></script>
+  <script src="javascripts/attrExtend.js"></script>
 
-			var iconTemplate = {
-				pass: $('&nbsp;<i class="fa fa-fw fa-check"></i>'),
-				fail: $('&nbsp;<i class="fa fa-fw fa-warning"></i>')
-			};
+  <link rel="stylesheet" href="stylesheets/styles.css">
+  <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
-        //
-        // addProp
-        //
-        if (typeof $el.addProp.pass.attrAddProp('pass','4567') === 'object') {
-        	$el.addProp.pass.append(iconTemplate.pass.clone());
-        }
-        if (typeof $el.addProp.unique.attrAddProp('unique','4567') === 'object') {
-        	$el.addProp.unique.attr('pass', '');
-        	$el.addProp.unique.append(iconTemplate.pass.clone());
-        }
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>attrExtend</h1>
+        <p>A simple plugin that extends jQuery attribute modification similar to *Class functions</p>
 
-        //
-        // hasAttr
-        //
-        if ($el.hasAttr.pass.hasAttr('pass')) {
-        	$el.hasAttr.pass.append(iconTemplate.pass.clone());
-        }
-        if (!$el.hasAttr.fail.hasAttr('pass')) {
-        	$el.hasAttr.fail.append(iconTemplate.fail.clone());
-        }
+        <p class="view"><a href="https://github.com/tbremer/attrExtend">View the Project on GitHub <small>tbremer/attrExtend</small></a></p>
 
-        //
-        // hasProp
-        //
-        if($el.hasProp.pass.attrHasProp('pass', '1234')) {
-        	$el.hasProp.pass.append(iconTemplate.pass.clone());
-        }
-        if(!$el.hasProp.fail.attrHasProp('fail', '1234')) {
-        	$el.hasProp.fail.append(iconTemplate.fail.clone());
-        }
 
-        //
-        // removeProp
-        //
-        if (typeof $el.removeProp.pass.attrRemoveProp('pass', '1234') === 'object') {
-        	$el.removeProp.pass.append(iconTemplate.pass.clone());
-        }
-        if (typeof $el.removeProp.fail.attrRemoveProp('fail', '1234') === 'object') {
-        	$el.removeProp.fail.append(iconTemplate.fail.clone());
-        }
-      });
-    </script>
+        <ul>
+          <li><a href="https://github.com/tbremer/attrExtend/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/tbremer/attrExtend/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/tbremer/attrExtend">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <p><img src="http://img.shields.io/badge/Version-1.0.1-00cc00.svg?style=flat" alt="version-1.0.1">   <img src="http://img.shields.io/badge/License-MIT-dd6ad5.svg?style=flat" alt="MIT">   <img src="http://img.shields.io/badge/Minified%20Download-664b-136ad5.svg?style=flat" alt="minified-download-664b"></p>
 
-    <style>
-    	.jquery {
-    		position: relative;
-    		text-align: center;
-    		font-size: 1.25em;
-    		padding: .15em .5em;
-    		font-family: Anonymous Pro Minus, sans-serif;
-    		cursor: default;
-    		color: #c2c2c2;
-    	}
-    	.jquery:hover {
-    		background-color: #efefef;
-    		color: #333;
-    	}
-    	.jquery + .jquery {
-    		margin-top: 10px;
-    	}
-    	.jquery[pass] .fa {
-    		color: #8ce58c;
-    	}
-    	.jquery[pass]:hover .fa {
-    		color: #28b028;
-    	}
-    	.jquery[fail] .fa {
+        <h2>
+          <a name="how-to-use" class="anchor" href="#how-to-use"><span class="octicon octicon-link"></span></a>How to use
+        </h2>
 
-    		color: #e58c8c;
-    	}
-    	.jquery[fail]:hover .fa {
-    		color: #b02828;
-    	}
-    	hr {
-    		/*margin: .25em 0;*/
-    		/*padding: 0;*/
-    		border: 1px solid #136ad5;
-    		border: 1px solid rgba(19, 106, 213, 0.7);
-    	}
-    </style>
+        <p>attrExtend ports the same features of jQuery's native *Class functions. Most parts of this extension are chainable.</p>
+
+        <h2>
+          <a name="api" class="anchor" href="#api"><span class="octicon octicon-link"></span></a>API
+        </h2>
+
+        <table>
+          <thead>
+            <tr>
+              <th><strong>FUNCTION</strong></th>
+              <th><strong>RETURNS</strong></th>
+              <th><strong>ARGUMENTS</strong></th>
+              <th><strong>EXAMPLE</strong></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>hasAttr</strong></td>
+              <td>true or false</td>
+              <td>attribute</td>
+              <td>$(element).hasAttr('attribute')</td>
+            </tr>
+            <tr>
+              <td><strong>attrHasProp</strong></td>
+              <td>true or false</td>
+              <td>attribute, property</td>
+              <td>$(element).attrHasProp('attribute', 'property')</td>
+            </tr>
+            <tr>
+              <td><strong>attrAddProp</strong></td>
+              <td>jQuery Object</td>
+              <td>attribute, property</td>
+              <td>$(element).attrAddProp('attribute', 'property')</td>
+            </tr>
+            <tr>
+              <td><strong>attrRemoveProp</strong></td>
+              <td>jQuery Object</td>
+              <td>attribute, property</td>
+              <td>$(element).attrRemoveProp('attribute', 'property')</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>
+          <a name="tests" class="anchor" href="#tests"><span class="octicon octicon-link"></span></a>Tests
+        </h2>
+
+        <div class="jquery addProp pass" pass="1234">
+          <span class="title">attrAddProp('pass', '4567') to attribute</span>
+        </div>
+        <div class="jquery addProp unique">
+          <span class="title">attrAddProp('unique','4567') new attribute</span>
+        </div>
+
+        <hr>
+
+        <div class="jquery hasAttr pass" pass>
+          <span class="title">hasAttr('pass') passing</span>
+        </div>
+        <div class="jquery hasAttr fail" fail>
+          <span class="title">hasAttr('pass') failing</span>
+        </div>
+
+        <hr>
+
+        <div class="jquery hasProp pass" pass="1234">
+          <span class="title">attrHasProp('pass') passing</span>
+        </div>
+        <div class="jquery hasProp fail" fail="5678">
+          <span class="title">attrHasProp('pass') failing</span>
+        </div>
+
+        <hr>
+
+        <div class="jquery removeProp pass" pass="1234 4567">
+          <span class="title">attrRemoveProp() passing</span>
+        </div>
+        <div class="jquery removeProp fail" fail="5678 8901">
+          <span class="title">attrRemoveProp() failing</span>
+        </div>
+
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/tbremer">tbremer</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    <script src="javascripts/attrExtendTests.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">
+
   </body>
   </html>
