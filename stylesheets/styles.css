@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Lato:300italic,700italic,300,700);
+@import url(https://fonts.googleapis.com/css?family=Lato:300italic,700italic,300,400,700);
 
 body {
   padding:50px;
@@ -268,7 +268,7 @@ footer p a {
   text-align: center;
   font-size: 1.25em;
   padding: 0;
-  font-family: Anonymous Pro Minus, sans-serif;
+  font-family: Lato, sans-serif;
   cursor: default;
   color: #c2c2c2;
 }
@@ -280,6 +280,9 @@ footer p a {
   margin-top: 10px;
 }
 
+.jquery .fa {
+  margin-right: 5px;
+}
 .jquery[pass] .fa {
   color: #8ce58c;
 }
@@ -287,20 +290,29 @@ footer p a {
   color: #28b028;
 }
 .jquery[fail] .fa {
-
   color: #e58c8c;
 }
 .jquery[fail]:hover .fa {
   color: #b02828;
 }
-.jquery code {
-  display: block;
-  padding: .15em .5em;
-  background-color: #efefef;
-  color: #333;
+.jquery .code-title,
+.jquery .code {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: .75em;
+}
+.jquery .code-title {
+  font-weight: 700;
+  margin-right: 5px;
+}
+.jquery .code {
+  padding: .05em .5em;
+  color: #c2c2c2;
+  background-color: #f1f1f1;
 }
 .jquery:hover code {
-  background-color: #c2c3c4;
+  background-color: #e4e4e4;
+  color: #333;
 }
 
 hr {
