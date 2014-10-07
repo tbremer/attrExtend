@@ -1,31 +1,40 @@
-$(function () {
-	var $el = {
-		addProp: {
-			pass: $('.addProp.pass'),
-			unique: $('.addProp.unique')
-		},
-		hasAttr: {
-			pass: $('.hasAttr.pass'),
-			fail: $('.hasAttr.fail')
-		},
-		hasProp: {
-			pass: $('.hasProp.pass'),
-			fail: $('.hasProp.fail')
-		},
-		removeProp: {
-			pass: $('.removeProp.pass'),
-			fail: $('.removeProp.fail')
-		}
-	};
+!function () {
+	$(function () {
+		var $el = {
+			addProp: {
+				pass: $('.addProp.pass'),
+				unique: $('.addProp.unique')
+			},
+			hasAttr: {
+				pass: $('.hasAttr.pass'),
+				fail: $('.hasAttr.fail')
+			},
+			hasProp: {
+				pass: $('.hasProp.pass'),
+				fail: $('.hasProp.fail')
+			},
+			removeProp: {
+				pass: $('.removeProp.pass'),
+				fail: $('.removeProp.fail')
+			}
+		};
 
-	var iconTemplate = {
-		pass: $('<i class="fa fa-fw fa-check"></i>'),
-		fail: $('<i class="fa fa-fw fa-warning"></i>')
-	};
+		var iconTemplate = {
+			pass: $('<i class="fa fa-fw fa-check"></i>'),
+			fail: $('<i class="fa fa-fw fa-warning"></i>')
+		};
 
-	//
-	// addProp
-	//
+		$('.jquery').each(function () {
+			var str = String($(this).clone().empty().removeAttr('class')[0].outerHTML);
+			str = escapeHtml(str);
+			var codeTemplate = "<div class='code-wrapper'><span class='code-title'>Test assumes this HTML:</span><code class='code'>"+str+"</code></div>";
+			$(this).append(codeTemplate);
+
+		});
+
+		//
+		// addProp
+		//
 		if (typeof $el.addProp.pass.attrAddProp('pass','4567') === 'object') {
 			iconTemplate.pass.clone().insertBefore($el.addProp.pass.find('.title'));
 		}
@@ -34,9 +43,9 @@ $(function () {
 			iconTemplate.pass.clone().insertBefore($el.addProp.unique.find('.title'));
 		}
 
-	//
-	// hasAttr
-	//
+		//
+		// hasAttr
+		//
 		if ($el.hasAttr.pass.hasAttr('pass')) {
 			iconTemplate.pass.clone().insertBefore($el.hasAttr.pass.find('.title'))
 		}
@@ -44,9 +53,9 @@ $(function () {
 			iconTemplate.fail.clone().insertBefore($el.hasAttr.fail.find('.title'))
 		}
 
-	//
-	// hasProp
-	//
+		//
+		// hasProp
+		//
 		if($el.hasProp.pass.attrHasProp('pass', '1234')) {
 			iconTemplate.pass.clone().insertBefore($el.hasProp.pass.find('.title'));
 		}
@@ -54,13 +63,29 @@ $(function () {
 			iconTemplate.fail.clone().insertBefore($el.hasProp.fail.find('.title'));
 		}
 
-	//
-	// removeProp
-	//
+		//
+		// removeProp
+		//
 		if (typeof $el.removeProp.pass.attrRemoveProp('pass', '1234') === 'object') {
 			iconTemplate.pass.clone().insertBefore( $el.removeProp.pass.find('.title'));
 		}
 		if (typeof $el.removeProp.fail.attrRemoveProp('fail', '1234') === 'object') {
 			iconTemplate.fail.clone().insertBefore($el.removeProp.fail.find('.title'));
 		}
-});
+	});
+
+	var entityMap = {
+		"&": "&amp;",
+		"<": "&lt;",
+		">": "&gt;",
+		'"': '&quot;',
+		"'": '&#39;',
+		"/": '&#x2F;'
+	};
+
+	function escapeHtml(string) {
+		return String(string).replace(/[&<>"'\/]/g, function (s) {
+			return entityMap[s];
+		});
+	}
+}(jQuery);
